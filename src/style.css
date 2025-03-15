@@ -1,0 +1,15 @@
+.default-hover:hover {
+  box-shadow: 2px 2px 5px #e4e7e9;
+}
+.default-hover {
+  transition: all ease-in 100ms;
+}
+
+.line-clamp-2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+}
