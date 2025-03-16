@@ -5,6 +5,7 @@ import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 
 import App from "./App.vue";
+import router from "./router/index";
 import vuetifyColor from "./plugins/vuetify";
 
-createApp(App).use(vuetifyColor).mount("#app");
+createApp(App).use(vuetifyColor).use(router).mount("#app");

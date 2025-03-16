@@ -117,10 +117,17 @@
         </section>
       </div>
     </section>
+
+    <!-- Category -->
+    <section style="width: 80%; margin: 0 auto">
+      <Category />
+      <v-divider style="margin: 10px 0 20px"></v-divider>
+    </section>
   </section>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
+import Category from "./Category.vue";
 
 const isShowPromotionBanner = ref(true);
 

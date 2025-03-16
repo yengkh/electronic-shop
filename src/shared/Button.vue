@@ -9,7 +9,7 @@
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
   >
-    <v-icon>{{ preIcon }}</v-icon>
+    <v-icon v-if="preIcon">{{ preIcon }}</v-icon>
     <span>{{ title }}</span>
     <v-icon>{{ isHovered ? hoverIcon : icon }}</v-icon>
   </div>

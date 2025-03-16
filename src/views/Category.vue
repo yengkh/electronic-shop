@@ -1,160 +1,165 @@
 <template>
-  <div style="padding: 16px 0 0" class="main">
-    <section class="first-path">
-      <div
-        @mouseenter="showCategories = true"
-        @mouseleave="showCategories = false"
-      >
-        <Button
-          title="All Category"
-          bg="bg-gray50"
-          icon="mdi mdi-chevron-down"
-          text-color="text-gray900"
-          hover-bg="bg-primary500"
-          hover-icon="mdi mdi-chevron-up"
-          hover-text-color="text-gray00"
-          padding=" 15px 24px"
-        />
-      </div>
-      <div class="first-path">
-        <p v-for="item in listItems" :key="item.id" class="button-48">
-          <v-icon size="large">{{ item?.icon }}</v-icon>
-          <span style="margin-left: 5px">{{ item?.title }}</span>
-        </p>
-      </div>
-    </section>
-    <section>
-      <p>
-        <v-icon>mdi mdi-phone-outgoing-outline</v-icon
-        ><span style="margin-left: 5px">(+855) 012-345-67</span>
-      </p>
-    </section>
-  </div>
-  <section class="d-flex">
-    <v-card
-      v-show="showCategories"
-      class="bg-gray00"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
-      style="width: 250px"
-    >
-      <p
-        v-for="item in categoryItems"
-        :key="item?.id"
-        class="category-style"
-        :class="item?.items ? 'big-text' : 'normal-text'"
-        @mouseenter="
-          getMoreItems(item?.items || []),
-            getNestSubItems(
-              item?.items?.[0]?.popular || [],
-              0,
-              item?.items?.[0]?.discountItem,
-              item?.items?.[0]?.subTile
-            )
-        "
-        @mouseleave="
-          showCategories == false
-            ? getMoreItems([])
-            : getMoreItems(item?.items || [])
-        "
-      >
-        <span>{{ item?.title }}</span>
-        <v-icon v-if="item?.items">mdi mdi-chevron-right</v-icon>
-      </p>
-    </v-card>
-    <v-card
-      v-show="showCategories && moreListItems?.length > 0"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
-      class="sub-category"
-    >
-      <!-- List of sub items -->
-      <div style="width: 150px">
-        <p class="text-gray600" style="padding: 8px 15px">All</p>
-        <p
-          v-for="item in moreListItems"
-          :key="item?.id"
-          :class="{ 'bg-gray50 text-gray900': activeItemId === item?.id }"
-          class="category-style"
-          @mouseenter="
-            getNestSubItems(
-              item?.popular || [],
-              null,
-              item?.discountItem,
-              subTitle
-            )
-          "
-          @mouseleave="activeItemId = null"
-        >
-          {{ item.title }}
-        </p>
-      </div>
-      <!-- nestSubItems -->
-      <div style="margin-left: 24px">
-        <p style="margin-bottom: 24px">{{ subTitle }}</p>
+  <div style="position: relative">
+    <div style="padding: 16px 0 0" class="main">
+      <section class="first-path">
         <div
-          v-for="item in nestSubItems"
-          :key="item?.id"
-          class="popular-items default-hover"
+          @mouseenter="showCategories = true"
+          @mouseleave="showCategories = false"
         >
-          <v-img :src="item?.image" class="subTiltleImage"></v-img>
-          <div style="margin-left: 8px">
-            <p class="text-gray900" style="font-size: 14px">
-              {{ item?.title }}
-            </p>
-            <p
-              class="text-secondary500"
-              style="font-size: 14px; font-weight: 600"
-            >
-              ${{ item?.price }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Discount -->
-      <div
-        class="discount-path bg-warning200 rounded d-flex align-center flex-column cursor-pointer"
-        v-if="disCountItems"
-      >
-        <v-img
-          :src="disCountItems?.image"
-          style="width: 248px; height: 96px"
-        ></v-img>
-        <p style="font-size: 28px; font-weight: 600; margin: 10px 0">
-          {{ disCountItems?.discountRate }}$ Discount
-        </p>
-        <v-line-clamp style="font-size: 16px" class="text-gray600 line-clamp-2">
-          {{ disCountItems?.discription }}
-        </v-line-clamp>
-        <div class="d-flex align-center" style="margin-top: 5px">
-          <p style="font-size: 14px" class="text-gray700">Starting price:</p>
-          <p
-            style="
-              font-weight: 600;
-              font-size: 16px;
-              border-radius: 4px;
-              padding: 6px 12px;
-              margin-left: 5px;
-            "
-            class="bg-gray00"
-          >
-            ${{ disCountItems?.price }} USD
-          </p>
-        </div>
-        <div style="margin-top: 24px">
           <Button
-            title="SHOP NOW"
-            icon="mdi mdi-arrow-right"
-            text-color="text-gray00"
-            bg="bg-primary500"
-            width="248px"
-            padding="15px"
+            title="All Category"
+            bg="bg-gray50"
+            icon="mdi mdi-chevron-down"
+            text-color="text-gray900"
+            hover-bg="bg-primary500"
+            hover-icon="mdi mdi-chevron-up"
+            hover-text-color="text-gray00"
+            padding=" 15px 24px"
           />
         </div>
-      </div>
-    </v-card>
-  </section>
+        <div class="first-path">
+          <p v-for="item in listItems" :key="item.id" class="button-48">
+            <v-icon size="large">{{ item?.icon }}</v-icon>
+            <span style="margin-left: 5px">{{ item?.title }}</span>
+          </p>
+        </div>
+      </section>
+      <section>
+        <p>
+          <v-icon>mdi mdi-phone-outgoing-outline</v-icon
+          ><span style="margin-left: 5px">(+855) 012-345-67</span>
+        </p>
+      </section>
+    </div>
+    <section class="d-flex" style="position: absolute; z-index: 999">
+      <v-card
+        v-show="showCategories"
+        class="bg-gray00"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        style="width: 250px"
+      >
+        <p
+          v-for="item in categoryItems"
+          :key="item?.id"
+          class="category-style"
+          :class="item?.items ? 'big-text' : 'normal-text'"
+          @mouseenter="
+            getMoreItems(item?.items || []),
+              getNestSubItems(
+                item?.items?.[0]?.popular || [],
+                0,
+                item?.items?.[0]?.discountItem,
+                item?.items?.[0]?.subTile
+              )
+          "
+          @mouseleave="
+            showCategories == false
+              ? getMoreItems([])
+              : getMoreItems(item?.items || [])
+          "
+        >
+          <span>{{ item?.title }}</span>
+          <v-icon v-if="item?.items">mdi mdi-chevron-right</v-icon>
+        </p>
+      </v-card>
+      <v-card
+        v-show="showCategories && moreListItems?.length > 0"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        class="sub-category"
+      >
+        <!-- List of sub items -->
+        <div style="width: 150px">
+          <p class="text-gray600" style="padding: 8px 15px">All</p>
+          <p
+            v-for="item in moreListItems"
+            :key="item?.id"
+            :class="{ 'bg-gray50 text-gray900': activeItemId === item?.id }"
+            class="category-style"
+            @mouseenter="
+              getNestSubItems(
+                item?.popular || [],
+                null,
+                item?.discountItem,
+                subTitle
+              )
+            "
+            @mouseleave="activeItemId = null"
+          >
+            {{ item.title }}
+          </p>
+        </div>
+        <!-- nestSubItems -->
+        <div style="margin-left: 24px">
+          <p style="margin-bottom: 24px">{{ subTitle }}</p>
+          <div
+            v-for="item in nestSubItems"
+            :key="item?.id"
+            class="popular-items default-hover"
+          >
+            <v-img :src="item?.image" class="subTiltleImage"></v-img>
+            <div style="margin-left: 8px">
+              <p class="text-gray900" style="font-size: 14px">
+                {{ item?.title }}
+              </p>
+              <p
+                class="text-secondary500"
+                style="font-size: 14px; font-weight: 600"
+              >
+                ${{ item?.price }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discount -->
+        <div
+          class="discount-path bg-warning200 rounded d-flex align-center flex-column cursor-pointer"
+          v-if="disCountItems"
+        >
+          <v-img
+            :src="disCountItems?.image"
+            style="width: 248px; height: 96px"
+          ></v-img>
+          <p style="font-size: 28px; font-weight: 600; margin: 10px 0">
+            {{ disCountItems?.discountRate }}$ Discount
+          </p>
+          <v-line-clamp
+            style="font-size: 16px"
+            class="text-gray600 line-clamp-2"
+          >
+            {{ disCountItems?.discription }}
+          </v-line-clamp>
+          <div class="d-flex align-center" style="margin-top: 5px">
+            <p style="font-size: 14px" class="text-gray700">Starting price:</p>
+            <p
+              style="
+                font-weight: 600;
+                font-size: 16px;
+                border-radius: 4px;
+                padding: 6px 12px;
+                margin-left: 5px;
+              "
+              class="bg-gray00"
+            >
+              ${{ disCountItems?.price }} USD
+            </p>
+          </div>
+          <div style="margin-top: 24px">
+            <Button
+              title="SHOP NOW"
+              icon="mdi mdi-arrow-right"
+              text-color="text-gray00"
+              bg="bg-primary500"
+              width="248px"
+              padding="15px"
+            />
+          </div>
+        </div>
+      </v-card>
+    </section>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
