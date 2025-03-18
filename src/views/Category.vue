@@ -125,12 +125,11 @@
           <p style="font-size: 28px; font-weight: 600; margin: 10px 0">
             {{ disCountItems?.discountRate }}$ Discount
           </p>
-          <v-line-clamp
-            style="font-size: 16px"
-            class="text-gray600 line-clamp-2"
-          >
+
+          <p class="clamp-text" style="font-size: 16px">
             {{ disCountItems?.discription }}
-          </v-line-clamp>
+          </p>
+
           <div class="d-flex align-center" style="margin-top: 5px">
             <p style="font-size: 14px" class="text-gray700">Starting price:</p>
             <p
@@ -534,5 +533,15 @@ const getNestSubItems = (
   margin-left: 24px;
   padding: 32px;
   width: 320px;
+}
+
+.clamp-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-clamp: 2;
 }
 </style>

@@ -196,7 +196,7 @@ import HeadphonesImage from "@/assets/icons/Headphones.png";
   background-color: #f2f4f5;
   padding: 40px;
   border-radius: 4px;
-  width: 872px;
+  width: 1000px;
   height: 100%;
   display: flex;
   align-items: center;
