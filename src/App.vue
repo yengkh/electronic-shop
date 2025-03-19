@@ -4,7 +4,7 @@
     <v-main style="width: 80%; margin: 0 auto">
       <RouterView />
 
-      <div style="margin: 40px 0"></div>
+      <div style="margin: 100vh 0"></div>
     </v-main>
   </v-layout>
 </template>
