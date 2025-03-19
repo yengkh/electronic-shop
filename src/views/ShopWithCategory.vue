@@ -53,7 +53,6 @@ import Image3 from "@/assets/showCategory/3.png";
 import Image4 from "@/assets/showCategory/4.png";
 import Image5 from "@/assets/showCategory/5.png";
 import Image6 from "@/assets/showCategory/6.png";
-import type { VSlideGroup } from "vuetify/components";
 
 const listOfCategory = [
   {
