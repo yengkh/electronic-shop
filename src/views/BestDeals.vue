@@ -125,7 +125,7 @@ const bestDealItems = [
     price: "2,300",
     promotion: "",
     image: Image2,
-    label: "SOLE OUT",
+    label: "SOLD OUT",
   },
   {
     id: 1,

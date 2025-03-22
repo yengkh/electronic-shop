@@ -15,6 +15,7 @@ const props = defineProps<{
   title: string;
   textColor?: string;
   fontSize?: string;
+  isHexColor?: string;
 }>();
 
 const bgColorMap: Record<string, string> = {
@@ -25,11 +26,22 @@ const bgColorMap: Record<string, string> = {
   EXCLUSIVE: "bg-yellow-500",
 };
 
+// const isHexColor = (color: string) => /^#([0-9A-Fa-f]{3}){1,2}$/.test(color);
+
 const computedBg = computed(() => {
   if (props.title.includes("%")) {
     return "bg-warning300";
   }
-  return bgColorMap[props.title] || "bg-secondary500";
+
+  if (bgColorMap[props.title]) {
+    return bgColorMap[props.title];
+  }
+
+  if (props.isHexColor != "") {
+    return props.isHexColor;
+  }
+
+  return "bg-secondary500";
 });
 </script>
 

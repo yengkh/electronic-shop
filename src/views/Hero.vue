@@ -41,7 +41,9 @@
         </div>
       </section>
       <section style="position: relative">
-        <div class="first-item-price">$299</div>
+        <div class="first-item-price">
+          <CircleItem title="$299" is-show-bg-color="true" />
+        </div>
         <v-img :src="Image1" class="first-image"></v-img>
       </section>
     </div>
@@ -182,6 +184,7 @@
   </section>
 </template>
 <script lang="ts" setup>
+import CircleItem from "../shared/CircleItem.vue";
 import Button from "../shared/Button.vue";
 import Image1 from "@/assets/images/4.png";
 import Image5 from "@/assets/images/5.png";

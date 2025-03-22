@@ -1,5 +1,12 @@
 <template>
-  <section style="margin-top: 72px; display: flex; gap: 24px; width: 100%">
+  <section
+    style="
+      margin-top: 72px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    "
+  >
     <div class="first-path">
       <div
         style="
