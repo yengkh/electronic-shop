@@ -174,7 +174,7 @@
   box-shadow: 2px 2px 5px #e4e7e9 !important;
 }
 .default-hover {
-  transition: all ease-in 100ms !important;
+  transition: all ease-in-out 200ms !important;
 }
 
 .line-clamp-2 {
