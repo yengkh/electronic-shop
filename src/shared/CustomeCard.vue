@@ -17,7 +17,30 @@
         <v-img :src="image" style="width: 216px; height: 188px"></v-img>
       </div>
 
-      <v-card-subtitle style="margin-top: 24px">
+      <div style="padding: 5px 12px" v-if="isShowRateStar">
+        <v-icon
+          v-for="(_, index) in 5"
+          :key="index"
+          :color="
+            index < Math.floor(starAverage || 0)
+              ? 'primary500'
+              : index < starAverage!
+              ? 'primary500'
+              : 'gray300'
+          "
+        >
+          {{
+            index + 1 <= starAverage!
+              ? "mdi mdi-star"
+              : index < starAverage!
+              ? "mdi mdi-star-half-full"
+              : "mdi mdi-star-outline"
+          }}
+        </v-icon>
+        ({{ ratingNumber }})
+      </div>
+
+      <v-card-subtitle style="margin-top: 12px">
         <LineClamp :title="description" textColor="text-gray900" />
         <p style="margin-top: 10px">
           <span
@@ -71,6 +94,9 @@ const props = defineProps<{
   price: string;
   labelTitle?: string;
   isShowLabel?: boolean;
+  isShowRateStar?: boolean;
+  ratingNumber?: string;
+  starAverage?: number;
 }>();
 const cardHeightComput = computed(
   () => `height: ${props.cardHeight ?? "296px"};`
@@ -94,8 +120,6 @@ const handleMouseLeave = () => {
 <style scoped>
 .top-path {
   position: relative;
-  /* width: 216px;
-  height: 188px; */
   display: flex;
   align-items: center;
   justify-content: center;

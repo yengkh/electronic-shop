@@ -6,6 +6,7 @@
     :append-icon="appendIcon ? appendIcon : undefined"
     size="large"
     >{{ title }}</v-btn
+    @click="$emit('click')"
   >
 </template>
 <script lang="ts" setup>
@@ -18,5 +19,6 @@ const props = defineProps<{
 }>();
 
 const bgClass = computed(() => `bg-${props.bg ?? "primary500"}`);
+defineEmits(["click"]);
 </script>
 <style scoped></style>

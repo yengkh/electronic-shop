@@ -4,7 +4,7 @@ import { aliases, mdi } from "vuetify/iconsets/mdi";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-// Custom theme with your own HEX color codes
+// Custom theme with your HEX color codes
 const myCustomLightTheme = {
   dark: false,
   colors: {
@@ -72,52 +72,6 @@ const myCustomLightTheme = {
   },
 };
 
-const myCustomTypography = {
-  display01: {
-    size: "64px",
-    weight: "semi-bold",
-    lineHeight: "72px",
-  },
-  display02: {},
-  display03: {},
-  display04: {},
-  display05: {},
-  heading01: {},
-  heading02: {},
-  heading03: {},
-  heading04: {},
-  heading05: {},
-  label01: {},
-  label02: {},
-  label03: {},
-  label04: {},
-  label05: {},
-  bodyxxl400: {},
-  bodyxl400: {},
-  bodyxl500: {},
-  bodyxl600: {},
-  bodyLarge400: {},
-  bodyLarge500: {},
-  bodyLarge600: {},
-  bodyMedium400: {
-    size: "16px",
-    weight: "regular",
-    lineHeight: "24px",
-    // letterSpacing: "0.5px",
-  },
-  bodyMedium500: {},
-  bodyMedium600: {},
-  bodySmall400: {},
-  bodySmall500: {},
-  bodySmall600: {},
-  bodyTiny400: {},
-  bodyTiny500: {},
-  bodyTiny600: {},
-  bodyXs400: {},
-  bodyXs500: {},
-  bodyXs600: {},
-};
-
 export default createVuetify({
   components,
   directives,
@@ -134,7 +88,5 @@ export default createVuetify({
       mdi,
     },
   },
-  defaults: {
-    VTypography: myCustomTypography,
-  },
+  // Remove defaults.VTypography, as it's not a valid Vuetify option
 });

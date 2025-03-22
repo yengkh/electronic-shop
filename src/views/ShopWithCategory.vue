@@ -6,18 +6,17 @@
     >
       Shop with Categorys
     </p>
-    <div class="d-flex align-center" ; style="position: relative">
+    <div class="d-flex align-center" style="position: relative">
       <div style="position: absolute; left: 0">
         <IconButton
           icon="mdi mdi-chevron-left"
           rounded
           bg="primary500"
           is-white-color
-          co
         />
       </div>
 
-      <v-slide-group ref="slideGroup" class="flex-grow-1">
+      <v-slide-group ref="slideGroup">
         <v-slide-group-item v-for="(item, i) in listOfCategory" :key="i">
           <v-card
             elevation="0"
@@ -190,10 +189,5 @@ const listOfCategory = [
   height: 250px;
   padding: 12px 24px;
   cursor: pointer;
-}
-
-.v-slide-group__prev,
-.v-slide-group__next {
-  display: none !important;
 }
 </style>

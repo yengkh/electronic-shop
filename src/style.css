@@ -1,3 +1,175 @@
+.text-display01 {
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 600;
+}
+.text-display02 {
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 600;
+}
+.text-display03 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+}
+.text-display04 {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+}
+.text-display05 {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+}
+.text-heading01 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+.text-heading02 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+.text-heading03 {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.text-heading04 {
+  font-size: 16px;
+  line-height: 36px;
+  font-weight: 700;
+}
+.text-heading05 {
+  font-size: 14px;
+  line-height: 48px;
+  font-weight: 700;
+}
+.body-xxl400 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+}
+.body-xl400 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+}
+.body-xl500 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+}
+.body-xl600 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.body-large400 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.body-large500 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.body-large600 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.body-medium400 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.body-medium500 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.body-medium600 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+.body-small400 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.body-small500 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.body-small600 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.body-tiny400 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+.body-tiny500 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+.body-tiny600 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+.body-xs400 {
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 400;
+}
+.body-xs500 {
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 500;
+}
+.body-xs600 {
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 600;
+}
+.label01 {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+}
+.label02 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.label03 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.label04 {
+  font-size: 12px;
+  line-height: 150%;
+  font-weight: 500;
+}
+.label05 {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
 .default-hover:hover {
   box-shadow: 2px 2px 5px #e4e7e9 !important;
 }
