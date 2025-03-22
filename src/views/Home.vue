@@ -5,6 +5,7 @@
   <FeatureProducts />
   <NewArrivalItems />
   <ComputerAccessories />
+  <BigDiscount />
 </template>
 <script lang="ts" setup>
 import Hero from "./Hero.vue";
@@ -13,4 +14,5 @@ import ShopWithCategory from "./ShopWithCategory.vue";
 import FeatureProducts from "./FeatureProducts.vue";
 import NewArrivalItems from "./NewArrivalItems.vue";
 import ComputerAccessories from "./ComputerAccessories.vue";
+import BigDiscount from "./BigDiscount.vue";
 </script>
