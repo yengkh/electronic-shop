@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray50" style="margin-top: 72px">
+  <section class="bg-gray50" style="margin-top: 72px; padding-bottom: 72px">
     <p
       class="text-heading01 text-center"
       style="padding-top: 72px; padding-bottom: 40px"

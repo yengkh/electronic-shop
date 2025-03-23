@@ -19,7 +19,7 @@
               {{ item?.title }}
             </p>
           </div>
-          <p class="text-primary500" style="user-select: none">
+          <p class="text-primary500" style="user-select: none; cursor: pointer">
             <span>Brows All Products</span>
             <v-icon>mdi-arrow-right</v-icon>
           </p>

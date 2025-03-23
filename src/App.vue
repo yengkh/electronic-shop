@@ -3,11 +3,11 @@
     <AppBar />
     <v-main>
       <RouterView />
-
-      <div style="margin: 100vh 0"></div>
     </v-main>
+    <Footer />
   </v-layout>
 </template>
 <script lang="ts" setup>
 import AppBar from "./views/AppBar.vue";
+import Footer from "./views/Footer.vue";
 </script>

@@ -7,7 +7,7 @@
           v-for="smallItem in item?.item"
           :key="smallItem?.id"
           elevation="0"
-          class="border-thin my-2 default-hover pa-2"
+          class="border-thin mb-2 default-hover pa-2"
           style="cursor: pointer"
         >
           <section class="d-flex align-center ga-6">

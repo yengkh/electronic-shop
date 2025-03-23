@@ -1,5 +1,5 @@
 <template>
-  <section style="width: 100%">
+  <nav style="width: 100%">
     <!-- Top Banner promotion -->
     <transition name="slide-up-fade">
       <section class="top-promotion bg-gray900" v-if="isShowPromotionBanner">
@@ -123,7 +123,7 @@
       <Category />
       <v-divider style="margin: 10px 0 20px"></v-divider>
     </section>
-  </section>
+  </nav>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
