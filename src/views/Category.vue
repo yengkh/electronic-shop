@@ -3,19 +3,20 @@
     <div style="padding: 16px 0 0" class="main">
       <section class="first-path">
         <div
-          @mouseenter="showCategories = true"
+          @mouseenter="
+            showCategories = true;
+            isCategoryButtonHover = true;
+          "
           @mouseleave="showCategories = false"
         >
-          <Button
-            title="All Category"
-            bg="bg-gray50"
-            icon="mdi mdi-chevron-down"
-            text-color="text-gray900"
-            hover-bg="bg-primary500"
-            hover-icon="mdi mdi-chevron-up"
-            hover-text-color="text-gray00"
-            padding=" 15px 24px"
-          />
+          <v-btn
+            elevation="0"
+            class="ma-0"
+            size="x-large"
+            :append-icon="whichAppendIcon()"
+            :color="isCategoryButtonHover ? 'primary500' : 'gray50'"
+            >All Category</v-btn
+          >
         </div>
         <div class="first-path">
           <p v-for="item in listItems" :key="item.id" class="button-48">
@@ -167,6 +168,16 @@ import image0 from "@/assets/images/0.png";
 import image1 from "@/assets/images/1.png";
 import image2 from "@/assets/images/2.png";
 import image3 from "@/assets/images/3.png";
+
+const isCategoryButtonHover = ref(false);
+
+const whichAppendIcon = () => {
+  if (isCategoryButtonHover.value == true) {
+    return "mdi mdi-chevron-up";
+  }
+
+  return "mdi mdi-chevron-down";
+};
 interface MoreListItem {
   id: number;
   title: string;
@@ -365,6 +376,7 @@ const handleMouseLeave = () => {
   setTimeout(() => {
     if (!isHovering.value) {
       showCategories.value = false;
+      isCategoryButtonHover.value = false;
       getMoreItems([]);
     }
   }, 200);
@@ -446,7 +458,7 @@ const getNestSubItems = (
   transition: clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
     -webkit-clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 100%;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 .button-48:hover:before {
@@ -480,14 +492,6 @@ const getNestSubItems = (
   background-color: #f2f4f5;
   color: #191c1f;
 }
-
-/* .category-wrapper {
-  width: 250px;
-  box-shadow: 1px 1px 2px 2px #e4e7e9;
-  border-radius: 4px;
-  border: 1px solid #e4e7e9;
-} */
-
 .big-text {
   font-size: 14px;
   font-weight: bold;

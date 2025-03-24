@@ -23,15 +23,7 @@
         </p>
 
         <div style="margin-top: 24px">
-          <Button
-            title="SHOP NOW"
-            icon="mdi mdi-arrow-right"
-            bg="bg-primary500"
-            hover-icon="mdi mdi-arrow-right"
-            padding="15px 24px"
-            text-color="bg-gray00"
-            hover-bg="bg-primary500"
-          />
+          <CustomeButton title="SHOP NOW" append-icon="mdi-arrow-right" />
         </div>
 
         <div style="margin-top: 100px; display: flex; gap: 5px">
@@ -74,17 +66,7 @@
           >
             New Google Pixel 6 Pro
           </p>
-          <Button
-            title="SHOP NOW"
-            icon="mdi-arrow-right"
-            hover-icon="mdi-arrow-right"
-            padding="10px"
-            text-color="bg-gray00"
-            hover-bg="bg-primary500"
-            bg="bg-primary500"
-            width="156px"
-            height="48px"
-          />
+          <CustomeButton title="SHOP NOW" append-icon="mdi-arrow-right" />
         </div>
         <div
           style="
@@ -130,17 +112,7 @@
           >
             $299 USD
           </p>
-          <Button
-            title="SHOP NOW"
-            icon="mdi-arrow-right"
-            hover-icon="mdi-arrow-right"
-            padding="10px"
-            text-color="bg-gray00"
-            hover-bg="bg-primary500"
-            bg="bg-primary500"
-            width="156px"
-            height="48px"
-          />
+          <CustomeButton title="SHOP NOW" append-icon="mdi-arrow-right" />
         </div>
       </section>
     </div>
@@ -185,7 +157,6 @@
 </template>
 <script lang="ts" setup>
 import CircleItem from "../shared/CircleItem.vue";
-import Button from "../shared/Button.vue";
 import Image1 from "@/assets/images/4.png";
 import Image5 from "@/assets/images/5.png";
 import Image6 from "@/assets/images/6.png";
@@ -193,6 +164,7 @@ import BoxImage from "@/assets/icons/Vector.png";
 import TrophyImage from "@/assets/icons/Trophy.png";
 import CreditCardImage from "@/assets/icons/CreditCard.png";
 import HeadphonesImage from "@/assets/icons/Headphones.png";
+import CustomeButton from "../shared/CustomeButton.vue";
 </script>
 <style scoped>
 .first-item {

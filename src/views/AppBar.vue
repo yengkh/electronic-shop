@@ -1,6 +1,5 @@
 <template>
   <nav style="width: 100%">
-    <!-- Top Banner promotion -->
     <transition name="slide-up-fade">
       <section class="top-promotion bg-gray900" v-if="isShowPromotionBanner">
         <div style="width: 80%; margin: 0 auto" class="top-promotion-content">
@@ -94,13 +93,15 @@
             <v-text-field
               :loading="loading"
               append-inner-icon="mdi-magnify"
-              density="compact"
               label="Find for items..."
               variant="solo"
               hide-details
+              size="x-large"
               single-line
               @click:append-inner="onClick"
               style="width: 600px"
+              class="rounded-sm"
+              elevation="0"
             ></v-text-field>
           </div>
           <div class="d-flex align-center">
