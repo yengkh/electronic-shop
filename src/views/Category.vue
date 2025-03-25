@@ -163,7 +163,6 @@
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
-import Button from "../shared/Button.vue";
 import image0 from "@/assets/images/0.png";
 import image1 from "@/assets/images/1.png";
 import image2 from "@/assets/images/2.png";
@@ -447,7 +446,7 @@ const getNestSubItems = (
 .button-48:before {
   animation: opacityFallbackOut 0.5s step-end forwards;
   backface-visibility: hidden;
-  background-color: #ebebeb;
+  background-color: #f2f4f5;
   clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
   content: "";
   height: 100%;
