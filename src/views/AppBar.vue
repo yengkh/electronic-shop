@@ -50,7 +50,6 @@
         <!-- First -->
         <section class="second-path">
           <p>Wellcome to electronic shop</p>
-
           <div
             style="display: flex; align-items: center; justify-content: center"
           >
@@ -63,7 +62,7 @@
               :icon="item.icon"
             ></v-btn>
             <v-divider vertical class="mx-4" style="height: 55px"></v-divider>
-            <section style="position: relative">
+            <section style="position: relative; z-index: 150">
               <v-btn
                 variant="text"
                 class="rounded-sm"
@@ -150,15 +149,163 @@
             ></v-text-field>
           </div>
           <div class="d-flex align-center">
-            <v-badge
-              :content="2"
-              color="gray00"
-              style="margin-right: 10px; cursor: pointer"
-            >
-              <v-icon icon="mdi mdi-cart-outline"></v-icon>
-            </v-badge>
-            <v-btn icon="mdi mdi-cards-heart-outline" variant="text"></v-btn>
+            <div style="position: relative; z-index: 101">
+              <v-badge
+                :content="2"
+                color="gray00"
+                style="margin-right: 10px; cursor: pointer"
+                @click="toggleShowCart()"
+              >
+                <v-icon icon="mdi mdi-cart-outline"></v-icon>
+              </v-badge>
+              <v-card v-show="isShowCart" class="custom-cart-item">
+                <v-card-title class="body-xl400"
+                  >Shopping Cart (2)</v-card-title
+                >
+                <v-divider></v-divider>
 
+                <section style="margin: 20px 0">
+                  <v-row v-for="item in cartItems" :key="item?.id">
+                    <v-col cols="4">
+                      <v-img
+                        :src="item?.image"
+                        width="80"
+                        height="80"
+                        class="border-thin"
+                      ></v-img>
+                    </v-col>
+                    <v-col cols="6">
+                      <p class="line-clamp-2 text-gray900 body-small400">
+                        {{ item?.description }}
+                      </p>
+                      <p class="mt-2">
+                        <span class="text-gray600 body-small400"
+                          >{{ item?.quantity }} *
+                        </span>
+                        <span class="body-small600 text-secondary500">
+                          ${{ item?.price }}</span
+                        >
+                      </p>
+                    </v-col>
+                    <v-col cols="2">
+                      <v-btn
+                        variant="text"
+                        icon="mdi mdi-close"
+                        size="small"
+                        density="comfortable"
+                      ></v-btn>
+                    </v-col>
+                  </v-row>
+                </section>
+
+                <v-divider></v-divider>
+                <div class="d-flex align-center justify-space-between my-6">
+                  <p>Sub-Total:</p>
+                  <p class="body-medium500 text-gray900">
+                    ${{ calculateCartPrice() }} USD
+                  </p>
+                </div>
+
+                <v-card-actions class="d-flex flex-column ga-4">
+                  <v-btn
+                    text="CHECKOUT NOW"
+                    class="bg-primary500 rounded-sm"
+                    style="width: 100%"
+                    size="large"
+                    append-icon="mdi-arrow-right"
+                    elevation="0"
+                  ></v-btn>
+                  <v-btn
+                    text="VIEW CART"
+                    class="rounded-sm"
+                    style="width: 100%"
+                    size="large"
+                    elevation="0"
+                    variant="outlined"
+                    color="primary500"
+                  ></v-btn>
+                </v-card-actions>
+              </v-card>
+            </div>
+            <div style="position: relative; z-index: 101">
+              <v-btn
+                icon="mdi mdi-cards-heart-outline"
+                variant="text"
+                @click="toggleShowFavorites()"
+              ></v-btn>
+              <v-card
+                v-show="isShowFavorites"
+                class="custom-cart-item"
+                style="margin-top: 10px"
+              >
+                <v-card-title class="body-xl400"
+                  >Shopping Cart (2)</v-card-title
+                >
+                <v-divider></v-divider>
+
+                <section style="margin: 20px 0">
+                  <v-row v-for="item in cartItems" :key="item?.id">
+                    <v-col cols="4">
+                      <v-img
+                        :src="item?.image"
+                        width="80"
+                        height="80"
+                        class="border-thin"
+                      ></v-img>
+                    </v-col>
+                    <v-col cols="6">
+                      <p class="line-clamp-2 text-gray900 body-small400">
+                        {{ item?.description }}
+                      </p>
+                      <p class="mt-2">
+                        <span class="text-gray600 body-small400"
+                          >{{ item?.quantity }} *
+                        </span>
+                        <span class="body-small600 text-secondary500">
+                          ${{ item?.price }}</span
+                        >
+                      </p>
+                    </v-col>
+                    <v-col cols="2">
+                      <v-btn
+                        variant="text"
+                        icon="mdi mdi-close"
+                        size="small"
+                        density="comfortable"
+                      ></v-btn>
+                    </v-col>
+                  </v-row>
+                </section>
+
+                <v-divider></v-divider>
+                <div class="d-flex align-center justify-space-between my-6">
+                  <p>Sub-Total:</p>
+                  <p class="body-medium500 text-gray900">
+                    ${{ calculateCartPrice() }} USD
+                  </p>
+                </div>
+
+                <v-card-actions class="d-flex flex-column ga-4">
+                  <v-btn
+                    text="CHECKOUT NOW"
+                    class="bg-primary500 rounded-sm"
+                    style="width: 100%"
+                    size="large"
+                    append-icon="mdi-arrow-right"
+                    elevation="0"
+                  ></v-btn>
+                  <v-btn
+                    text="VIEW CART"
+                    class="rounded-sm"
+                    style="width: 100%"
+                    size="large"
+                    elevation="0"
+                    variant="outlined"
+                    color="primary500"
+                  ></v-btn>
+                </v-card-actions>
+              </v-card>
+            </div>
             <!-- Login -->
             <v-dialog v-model="isLoginDialog" max-width="500">
               <template v-slot:activator="{ props: activatorProps }">
@@ -238,7 +385,6 @@
                 </div>
               </v-card>
             </v-dialog>
-
             <!-- Nested Signup Dialog -->
             <v-dialog v-model="isSignUpDialog" max-width="500">
               <v-card elevation="0" class="rounded-sm" style="padding: 32px">
@@ -340,6 +486,11 @@
       <v-divider style="margin: 10px 0 20px"></v-divider>
     </section>
   </nav>
+  <div
+    class="drop-shadow"
+    v-if="isShowCart || isShowFavorites"
+    @click="dropSahdowFunction()"
+  ></div>
   <!-- Login -->
 </template>
 <script lang="ts" setup>
@@ -354,6 +505,14 @@ import CustomeDividerWithText from "../shared/CustomeDividerWithText.vue";
 import Facebook from "@/assets/facebook.png";
 import Google from "@/assets/google.png";
 import TikTok from "@/assets/tik-tok.png";
+import FirstCart from "@/assets/feature-products/5.png";
+import SecondCart from "@/assets/feature-products/7.png";
+
+const dropSahdowFunction = () => {
+  isShowCart.value = false;
+  isShowFavorites.value = false;
+};
+
 const isShowPromotionBanner = ref(true);
 const toggleShowPromotionBanner = () =>
   (isShowPromotionBanner.value = !isShowPromotionBanner.value);
@@ -426,6 +585,42 @@ const switchToLogin = () => {
 
 const showOldPassword = ref(false);
 const showNewPassword = ref(false);
+
+const isShowCart = ref(false);
+const toggleShowCart = () => {
+  isShowCart.value = !isShowCart.value;
+  isShowFavorites.value = false;
+};
+
+const isShowFavorites = ref(false);
+const toggleShowFavorites = () => {
+  isShowFavorites.value = !isShowFavorites.value;
+  isShowCart.value = false;
+};
+const cartItems = [
+  {
+    id: 0,
+    image: FirstCart,
+    price: 1200,
+    description: "Canon EOS 1500D DSLR Camera Body+ 18-55 mm",
+    quantity: 2,
+  },
+  {
+    id: 1,
+    image: SecondCart,
+    price: 1000,
+    description: "Simple Mobile 5G LTE Galexy 12 Mini 512GB Gaming Phone",
+    quantity: 1,
+  },
+];
+
+const calculateCartPrice = () => {
+  let total = 0;
+  cartItems.forEach((item) => {
+    total += item.price * item.quantity;
+  });
+  return total;
+};
 </script>
 <style scoped>
 .top-promotion {
@@ -495,5 +690,27 @@ const showNewPassword = ref(false);
   cursor: pointer;
   user-select: none;
   gap: 5px;
+}
+
+.custom-cart-item {
+  position: absolute;
+  z-index: 101;
+  width: 400px;
+  right: 0;
+  top: 40px;
+  padding: 15px 30px;
+}
+
+.drop-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
