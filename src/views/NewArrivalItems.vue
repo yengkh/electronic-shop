@@ -2,12 +2,12 @@
   <section style="margin-top: 72px">
     <div class="d-flex align-center justify-space-between">
       <p class="text-heading03">New Arrivals</p>
-      <p class="text-secondary500" style="user-select: none; cursor: pointer">
-        <span>Browse all products</span>
-        <span class="ml-1">
-          <v-icon>mdi-arrow-right</v-icon>
-        </span>
-      </p>
+      <CustomeButton
+        title="Browse all products"
+        text-color="secondary500"
+        append-icon="mdi-arrow-right"
+        bg=""
+      />
     </div>
     <v-row align="center" style="margin-top: 24px; gap: 24px">
       <v-col

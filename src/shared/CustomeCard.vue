@@ -68,14 +68,15 @@
       class="hover-items-path"
       :class="{ 'show-hover-item': isHoveritem }"
     >
+      <IconButton icon="mdi mdi-heart" rounded bg="bg-gray00" hoverBg />
+      <IconButton icon="mdi mdi-cart-outline" rounded bg="bg-gray00" hoverBg />
       <IconButton
-        icon="mdi mdi-cards-heart-outline"
+        icon="mdi mdi-eye-outline"
         rounded
         bg="bg-gray00"
         hoverBg
+        @click="goToDetailPage()"
       />
-      <IconButton icon="mdi mdi-cart-outline" rounded bg="bg-gray00" hoverBg />
-      <IconButton icon="mdi mdi-eye-outline" rounded bg="bg-gray00" hoverBg />
     </div>
   </section>
 </template>
@@ -85,6 +86,16 @@ import LineClamp from "./LineClamp.vue";
 import Label from "./Label.vue";
 import IconButton from "./IconButton.vue";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goToDetailPage = () => {
+  router.push("/detail-page").then(() => {
+    // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo(0, 0);
+  });
+};
 
 const props = defineProps<{
   image: string;

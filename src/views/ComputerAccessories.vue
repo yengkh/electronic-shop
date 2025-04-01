@@ -19,10 +19,12 @@
               {{ item?.title }}
             </p>
           </div>
-          <p class="text-primary500" style="user-select: none; cursor: pointer">
-            <span>Brows All Products</span>
-            <v-icon>mdi-arrow-right</v-icon>
-          </p>
+          <CustomeButton
+            title="Brows All Products"
+            text-color="primary500"
+            append-icon="mdi-arrow-right"
+            bg=""
+          />
         </div>
       </div>
       <section>

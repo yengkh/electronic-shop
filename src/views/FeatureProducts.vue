@@ -61,13 +61,12 @@
               {{ item.title }}
             </p>
           </div>
-          <div
-            class="d-flex text-primary500 align-center"
-            style="user-select: none; cursor: pointer"
-          >
-            <p>Browse All Product</p>
-            <v-icon class="ml-1">mdi-arrow-right</v-icon>
-          </div>
+          <CustomeButton
+            title="Browse All Product"
+            text-color="primary500"
+            append-icon="mdi-arrow-right"
+            bg=""
+          />
         </section>
       </section>
       <div style="margin-top: 24px"></div>

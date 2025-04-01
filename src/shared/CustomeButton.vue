@@ -1,12 +1,12 @@
 <template>
   <v-btn
     elevation="0"
-    :class="['rounded-sm', bgClass]"
+    :class="['rounded-sm', bgClass, setTExtColor]"
     :prepend-icon="prependIcon ? prependIcon : undefined"
     :append-icon="appendIcon ? appendIcon : undefined"
     size="large"
-    >{{ title }}</v-btn
     @click="$emit('click')"
+    >{{ title }}</v-btn
   >
 </template>
 <script lang="ts" setup>
@@ -16,9 +16,11 @@ const props = defineProps<{
   prependIcon?: string;
   appendIcon?: string;
   bg?: string;
+  textColor?: string;
 }>();
 
 const bgClass = computed(() => `bg-${props.bg ?? "primary500"}`);
+const setTExtColor = computed(() => `text-${props.textColor ?? "white"}`);
 defineEmits(["click"]);
 </script>
 <style scoped></style>

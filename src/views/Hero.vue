@@ -7,7 +7,6 @@
       height: 520px;
     "
   >
-    <!-- Firt Item -->
     <div class="first-item">
       <section>
         <p class="text-secondary600 flex items-center gap-2">
@@ -204,6 +203,7 @@ import CustomeButton from "../shared/CustomeButton.vue";
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .second-path {

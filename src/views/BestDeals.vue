@@ -17,9 +17,12 @@
         </p>
       </div>
     </div>
-    <p class="text-secondary500 cursor-pointer" style="user-select: none">
-      <span>Browse All Product</span> <v-icon>mdi-arrow-right</v-icon>
-    </p>
+    <CustomeButton
+      title="Browse All Product"
+      text-color="secondary500"
+      append-icon="mdi-arrow-right"
+      bg=""
+    />
   </section>
   <section style="margin-top: 24px; display: flex">
     <v-card class="top-discount rounded-0 pa-6 border-thin" elevation="0">

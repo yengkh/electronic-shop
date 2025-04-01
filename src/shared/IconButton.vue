@@ -5,10 +5,13 @@
     :class="[
       roundedButton,
       bgColor,
-      'text-gray900',
+      'text-gray600',
       { hoverBgHover: hoverBg, 'text-white': isWhiteColor },
+      ,
     ]"
     @click="$emit('click')"
+    :size="btnSize"
+    :density="props.isShowPadding ? 'comfortable' : 'default'"
   >
   </v-btn>
 </template>
@@ -20,6 +23,8 @@ const props = defineProps<{
   bg?: string;
   hoverBg?: boolean;
   isWhiteColor?: boolean;
+  btnSize?: string;
+  isShowPadding?: boolean;
 }>();
 const roundedButton = computed(() =>
   props.rounded ? "rounded-circle" : "rounded-sm"

@@ -47,7 +47,7 @@ const computedBg = computed(() => {
 
 <style scoped>
 .custome-label {
-  padding: 2px 8px;
+  padding: 6px 12px;
   border-radius: 2px;
   width: fit-content;
   text-transform: uppercase;

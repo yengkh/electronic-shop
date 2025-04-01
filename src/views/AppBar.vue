@@ -660,7 +660,7 @@ const calculateCartPrice = () => {
 .top-mpromotion-balck {
   width: fit-content;
   padding: 5px 10px;
-  rotate: -5deg;
+  rotate: -45deg;
 }
 
 .shopping-button {
