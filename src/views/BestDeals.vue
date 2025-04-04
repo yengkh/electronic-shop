@@ -3,10 +3,13 @@
     style="display: flex; align-items: center; justify-content: space-between"
   >
     <div style="display: flex; align-items: center; gap: 24px">
-      <p style="font-size: 24px; font-weight: 600" class="text-gray900">
+      <p style="font-size: 22px; font-weight: 600" class="text-gray900">
         Best Deals
       </p>
-      <div style="display: flex; align-items: center; gap: 10px">
+      <div
+        style="display: flex; align-items: center; gap: 10px"
+        class="d-none d-sm-flex"
+      >
         <p style="font-size: 14px">Deals ends in</p>
         <p
           class="bg-warning300"
@@ -18,32 +21,23 @@
       </div>
     </div>
     <CustomeButton
-      title="Browse All Product"
+      title="All Products"
       text-color="secondary500"
       append-icon="mdi-arrow-right"
       bg=""
     />
   </section>
-  <section style="margin-top: 24px; display: flex">
-    <v-card class="top-discount rounded-0 pa-6 border-thin" elevation="0">
-      <div style="z-index: 100; position: relative">
-        <Label title="32% OFF" font-size="12px" bg="bg-warning300" />
-        <p style="margin: 10px 0"></p>
-        <Label title="HOT" bg="bg-danger500" />
+  <section class="main">
+    <v-card class="top-discount rounded-0 pa-4 border-thin" elevation="0">
+      <div>
+        <div style="z-index: 100; position: relative">
+          <Label title="32% OFF" font-size="12px" bg="bg-warning300" />
+          <p style="margin: 10px 0"></p>
+          <Label title="HOT" bg="bg-danger500" />
+        </div>
+        <v-img :src="Image1" class="top-discount-image"></v-img>
+        <p style="margin: 15px 0"></p>
       </div>
-
-      <v-img
-        :src="Image1"
-        style="
-          width: 280px;
-          height: 268px;
-          margin-top: -50px;
-          position: relative;
-          z-index: 1;
-        "
-      ></v-img>
-
-      <p style="margin: 15px 0"></p>
       <div style="display: flex; flex-direction: column; gap: 10px">
         <div style="display: flex">
           <v-icon v-for="_ in 5" color="warning500"
@@ -69,18 +63,19 @@
           Games built using the Xbox Series X|S development kit showcase
           unparalleled load times, visuals.
         </p>
-      </div>
-      <div
-        class="d-flex align-center justify-space-between mt-4"
-        style="width: 100%"
-      >
-        <IconButton icon="mdi mdi-cards-heart-outline" bg="primary100" />
-        <CustomeButton
-          title="ADD TO CARD"
-          prepend-icon="mdi mdi-cart-outline"
-          bg="primary500"
-        />
-        <IconButton icon="mdi mdi-eye-outline" bg="primary100" />
+
+        <div
+          class="d-flex align-center justify-space-between mt-4 ga-2"
+          style="width: fit-content"
+        >
+          <IconButton icon="mdi mdi-cards-heart-outline" bg="primary100" />
+          <CustomeButton
+            title="ADD TO CARD"
+            prepend-icon="mdi mdi-cart-outline"
+            bg="primary500"
+          />
+          <IconButton icon="mdi mdi-eye-outline" bg="primary100" />
+        </div>
       </div>
     </v-card>
     <v-container class="pa-0 ma-0" fluid>
@@ -88,7 +83,8 @@
         <v-col
           v-for="(item, index) in bestDealItems"
           :key="index"
-          cols="3"
+          cols="6"
+          sm="3"
           class="pa-0 ma-0"
         >
           <CustomeCard
@@ -98,6 +94,7 @@
             is-show-label
             :label-title="item?.label"
             :dis-count="item?.promotion"
+            card-height=""
           />
         </v-col>
       </v-row>
@@ -188,6 +185,11 @@ const bestDealItems = [
 ];
 </script>
 <style scoped>
+.main {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -196,17 +198,46 @@ const bestDealItems = [
 }
 
 .top-discount {
-  width: 450px;
-  height: 592px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .clamp-text {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
   line-clamp: 2;
+}
+
+.top-discount-image {
+  width: 250px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 600px) {
+  .top-discount {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    flex-direction: row;
+  }
+  .top-discount {
+    width: 450px;
+    height: 590px;
+    flex-direction: column;
+  }
+
+  .top-discount-image {
+    width: 250px;
+  }
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <section style="width: 80%; min-height: 100vh; margin: 0 auto">
+  <section class="custom-width h-100">
     <v-row>
-      <v-col cols="6">
+      <v-col cols="12" md="6">
         <ImagesPath />
       </v-col>
-      <v-col class="px-8" cols="6">
+      <v-col class="px-6" cols="12" md="6">
         <DetailPath />
       </v-col>
     </v-row>

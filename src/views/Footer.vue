@@ -1,21 +1,27 @@
 <template>
-  <footer style="padding-top: 72px">
+  <footer class="mt-10">
     <section
-      style="padding: 72px 0; width: 100%; background-color: #1b6392"
+      style="padding: 40px 0; width: 100%; background-color: #1b6392"
       class="d-flex align-center justify-center"
     >
-      <div
-        style="width: 40%"
-        class="d-flex align-center justify-center flex-column ga-4"
-      >
+      <div class="d-flex align-center justify-center flex-column ga-4">
         <p class="text-heading01 text-gray00">Subscribe to our newsletter</p>
-        <p class="body-medium400 text-gray300 text-center">
+        <p class="text-gray300 text-center" style="font-size: 18px">
           Praesent fringilla erat a lacinia egestas. Donec vehicula tempor
           libero et cursus. Donec non quam urna. Quisque vitae porta ipsum.
         </p>
         <div class="bg-gray00 rounded-sm customer-input-parent">
           <input type="text" class="custom-input" placeholder="Email address" />
-          <CustomeButton title="SUBSCRIBE" append-icon="mdi-arrow-right" />
+          <div class="d-none d-sm-block">
+            <CustomeButton title="SUBSCRIBE" append-icon="mdi-arrow-right" />
+          </div>
+          <div class="d-sm-none">
+            <v-btn
+              icon="mdi mdi-send-check"
+              variant="text"
+              color="primary500"
+            ></v-btn>
+          </div>
         </div>
         <v-divider
           inset
@@ -33,11 +39,11 @@
       </div>
     </section>
     <section style="padding-top: 72px" class="bg-gray900">
-      <v-container fluid style="width: 80%">
+      <v-container fluid class="end-footer">
         <v-row no-gutters>
-          <v-col cols="2">
+          <v-col cols="12" lg="2">
             <v-btn>Logo</v-btn>
-            <div style="margin-top: 24px" class="d-flex ga-1 flex-column">
+            <div class="d-flex ga-1 flex-column">
               <p class="text-gray500 body-small400">Customer Supports:</p>
               <p class="body-large500">(629) 555-0129</p>
               <address class="body-medium400">
@@ -46,9 +52,10 @@
               <p>info@kinbo.com</p>
             </div>
           </v-col>
-          <v-col cols="2">
+          <v-divider class="my-2 d-lg-none"></v-divider>
+          <v-col cols="6" sm="4" lg="2" style="user-select: none">
             <p class="label02">Top Category</p>
-            <div class="d-flex flex-column ga-1" style="margin-top: 24px">
+            <div class="d-flex flex-column ga-1">
               <p
                 v-for="item in topCategoryItems"
                 :key="item?.id"
@@ -59,9 +66,9 @@
               </p>
             </div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="6" sm="4" lg="2" style="user-select: none">
             <p class="label02">Quick links</p>
-            <div class="d-flex flex-column ga-1" style="margin-top: 24px">
+            <div class="d-flex flex-column ga-1">
               <p
                 v-for="item in quickLinkItems"
                 :key="item?.id"
@@ -72,30 +79,34 @@
               </p>
             </div>
           </v-col>
-          <v-col cols="2">
+          <v-col cols="12" sm="4" lg="2" style="user-select: none">
             <p class="label02">Download APP</p>
-            <div
-              class="d-flex flex-column ga-2"
-              style="margin-top: 24px; width: 100%"
-            >
-              <v-btn variant="tonal" size="x-large" class="align-start-btn">
-                <v-img :src="PlayStore" width="30" height="30"></v-img>
-                <div class="d-flex align-start flex-column ml-2">
-                  <p style="font-size: 11px" class="text-gray100">Get it on</p>
-                  <p style="font-size: 14px">Google Play</p>
-                </div>
-              </v-btn>
-
-              <v-btn variant="tonal" size="x-large" class="align-start-btn">
-                <v-img :src="AppStore" width="30" height="30"></v-img>
-                <div class="d-flex align-start flex-column ml-2">
-                  <p style="font-size: 11px" class="text-gray100">Get it on</p>
-                  <p style="font-size: 14px">App Store</p>
-                </div>
-              </v-btn>
-            </div>
+            <v-row style="width: 100%">
+              <v-col>
+                <v-btn variant="tonal" size="x-large" class="align-start-btn">
+                  <v-img :src="PlayStore" width="30" height="30"></v-img>
+                  <div class="d-flex align-start flex-column ml-2">
+                    <p style="font-size: 11px" class="text-gray100">
+                      Get it on
+                    </p>
+                    <p style="font-size: 14px">Google Play</p>
+                  </div>
+                </v-btn>
+              </v-col>
+              <v-col>
+                <v-btn variant="tonal" size="x-large" class="align-start-btn">
+                  <v-img :src="AppStore" width="30" height="30"></v-img>
+                  <div class="d-flex align-start flex-column ml-2">
+                    <p style="font-size: 11px" class="text-gray100">
+                      Get it on
+                    </p>
+                    <p style="font-size: 14px">App Store</p>
+                  </div>
+                </v-btn>
+              </v-col>
+            </v-row>
           </v-col>
-          <v-col cols="4">
+          <v-col cols="12" lg="4" style="user-select: none">
             <p class="label02">Popular Tag</p>
             <div class="popularTagParent">
               <p
@@ -265,7 +276,7 @@ const popularTagItems = ref([
 <style scoped>
 .customer-input-parent {
   width: 100%;
-  height: 80px;
+  height: 60px;
   display: inline-flex;
   padding: 0 12px;
   align-items: center;
@@ -275,7 +286,7 @@ const popularTagItems = ref([
 .custom-input {
   width: 100%;
   height: 100%;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .custom-input:focus {
@@ -325,5 +336,14 @@ const popularTagItems = ref([
   color: #ebc80c;
   font-weight: bold;
   transition: opacity 0.3s ease-in-out;
+}
+
+@media (min-width: 600px) {
+}
+@media (min-width: 1024px) {
+  .end-footer {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 </style>

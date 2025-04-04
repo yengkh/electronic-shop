@@ -1,9 +1,11 @@
 <template>
-  <section style="margin-top: 74px">
-    <v-card elevation="0" class="bg-primary200" style="padding: 80px">
+  <section style="margin-top: 40px">
+    <v-card elevation="0" class="bg-primary200 main">
       <v-row>
         <v-col
-          style="display: flex; flex-direction: column; gap: 32px; width: 30%"
+          class="d-flex ga-4 flex-column align-start justify-center"
+          cols="12"
+          sm="6"
         >
           <Label title="Save up to $200.00" isHexColor="bg-secondary500" />
           <p class="text-display03 text-gray9000">Macbook Pro</p>
@@ -14,8 +16,8 @@
             <CustomeButton title="SHOP NOW" append-icon="mdi-arrow-right" />
           </v-card-action>
         </v-col>
-        <v-col style="position: relative">
-          <div style="position: absolute; right: 200px; top: 70px">
+        <v-col style="position: relative" cols="12" sm="6">
+          <div class="d-none">
             <CircleItem
               title="$1999"
               bg-color="bg-primary200"
@@ -23,7 +25,7 @@
               shadow-color="bg-gray00"
             />
           </div>
-          <v-img :src="Image" width="536" height="424"></v-img>
+          <v-img :src="Image"></v-img>
         </v-col>
       </v-row>
     </v-card>
@@ -35,4 +37,19 @@ import CustomeButton from "../shared/CustomeButton.vue";
 import Image from "@/assets/mac.png";
 import CircleItem from "../shared/CircleItem.vue";
 </script>
-<style scoped></style>
+<style scoped>
+.main {
+  padding: 10px;
+}
+
+@media (min-width: 600px) {
+  .main {
+    padding: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .main {
+    padding: 0px 50px;
+  }
+}
+</style>

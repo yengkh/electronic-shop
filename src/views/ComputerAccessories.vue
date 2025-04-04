@@ -1,127 +1,116 @@
 <template>
-  <section
-    style="margin-top: 74px; display: flex; gap: 24px; align-items: start"
-  >
-    <div style="display: flex; flex-direction: column; gap: 24px; width: 75%">
-      <div class="d-flex align-center justify-space-between">
-        <p class="text-heading03">Computer Accessories</p>
-        <div class="d-flex align-center ga-4">
-          <div class="d-flex align-center ga-3">
-            <p
-              v-for="(item, index) in listOfNavItems"
-              :key="item?.id"
-              class="productTitle"
-              :class="{
-                'active-item': activeItemIndex === index,
-              }"
-              @click="changeItemIndex(index)"
-            >
-              {{ item?.title }}
-            </p>
-          </div>
-          <CustomeButton
-            title="Brows All Products"
-            text-color="primary500"
-            append-icon="mdi-arrow-right"
-            bg=""
-          />
+  <section style="margin-top: 40px">
+    <div class="d-flex align-center justify-space-between">
+      <p style="font-size: 22px; font-weight: bold">Computer Accessories</p>
+      <div class="d-flex align-center ga-4">
+        <div class="d-md-flex align-center ga-3 d-none">
+          <p
+            v-for="(item, index) in listOfNavItems"
+            :key="item?.id"
+            class="productTitle"
+            :class="{
+              'active-item': activeItemIndex === index,
+            }"
+            @click="changeItemIndex(index)"
+          >
+            {{ item?.title }}
+          </p>
         </div>
+        <CustomeButton
+          title="All Products"
+          text-color="primary500"
+          append-icon="mdi-arrow-right"
+          bg=""
+        />
       </div>
-      <section>
-        <v-container class="pa-0 ma-0" fluid>
-          <v-row no-gutters>
-            <v-col
-              cols="3"
-              v-for="item in computerAccessoryItems"
-              :key="item?.id"
-              class="pa-1 ma-0"
-            >
-              <CustomeCard
-                :image="item?.image"
-                :description="item?.description"
-                :price="item?.price.toString()"
-                is-show-label
-                :label-title="item?.label"
-                :dis-count="item?.discount"
-                cardHeight="354px"
-                isShowRateStar
-                :ratingNumber="item?.ratinfNumber"
-                :starAverage="item?.ratinfStar"
-              />
-            </v-col>
-          </v-row>
-        </v-container>
-      </section>
     </div>
-    <section style="width: 22%">
-      <v-card
-        elevation="0"
-        class="bg-warning200"
-        style="
-          padding: 32px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-        "
-      >
-        <v-img :src="Image" width="150" height="150"></v-img>
-        <p class="text-heading02 text-center text-gray900">
-          Xiaomi True Wireless Earbuds
-        </p>
-        <p class="text-gray700 body-medium400">
-          Escape the noise, It’s time to hear the magic with Xiaomi Earbuds.
-        </p>
+    <v-row>
+      <v-col cols="12" lg="9">
+        <section>
+          <v-container class="pa-0 ma-0" fluid>
+            <v-row no-gutters>
+              <v-col
+                cols="6"
+                sm="3"
+                v-for="item in computerAccessoryItems"
+                :key="item?.id"
+                class="pa-1 ma-0"
+              >
+                <CustomeCard
+                  :image="item?.image"
+                  :description="item?.description"
+                  :price="item?.price.toString()"
+                  is-show-label
+                  :label-title="item?.label"
+                  :dis-count="item?.discount"
+                  :cardHeight="mdAndUp ? '370px' : ''"
+                  isShowRateStar
+                  :ratingNumber="item?.ratinfNumber"
+                  :starAverage="item?.ratinfStar"
+                />
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+      </v-col>
+      <v-col cols="12" lg="3">
+        <v-row>
+          <v-col cols="12" sm="8" md="12">
+            <v-card elevation="0" class="bg-warning200 first-card">
+              <v-img :src="Image" width="150" height="150"></v-img>
+              <div class="d-flex flex-column ga-2 align-center justify-center">
+                <p class="text-center text-gray900 title">
+                  Xiaomi True Wireless Earbuds
+                </p>
+                <p class="text-gray700 body-medium400">
+                  Escape the noise, It’s time to hear the magic with Xiaomi
+                  Earbuds.
+                </p>
+                <p>
+                  <span class="text-gray700 body-small400">Only for: </span>
+                  <span class="bg-gray00 px-4 py-2 rounded ml-2">$299 USD</span>
+                </p>
 
-        <p>
-          <span class="text-gray700 body-small400">Only for: </span>
-          <span class="bg-gray00 px-4 py-2 rounded ml-2">$299 USD</span>
-        </p>
-
-        <v-card-action class="mt-4">
-          <CustomeButton title="SHOP NOW" append-icon="mdi-arrow-right" />
-        </v-card-action>
-      </v-card>
-      <v-card
-        elevation="0"
-        style="
-          background-color: #124261;
-          padding: 40px 24px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 15px;
-        "
-        class="mt-4"
-      >
-        <p
-          class="text-gray00 rounded"
-          style="
-            background-color: #3b5998;
-            width: fit-content;
-            padding: 6px 12px;
-          "
-        >
-          SUMMER SALES
-        </p>
-        <v-card-title class="text-heading02 text-gray00"
-          >37% DISCOUNT</v-card-title
-        >
-        <p class="body-large400 text-gray00">
-          only for
-          <span class="text-warning500 body-large600">SmartPhone</span>
-          product.
-        </p>
-        <v-card-action>
-          <CustomeButton
-            title="SHOP NOW"
-            append-icon="mdi-arrow-right"
-            bg="secondary500"
-          />
-        </v-card-action>
-      </v-card>
-    </section>
+                <v-card-action class="mt-4">
+                  <CustomeButton
+                    title="SHOP NOW"
+                    append-icon="mdi-arrow-right"
+                  />
+                </v-card-action>
+              </div>
+            </v-card>
+          </v-col>
+          <v-col cols="12" sm="4" md="12"
+            ><v-card elevation="0" class="second-card">
+              <p
+                class="text-gray00 rounded"
+                style="
+                  background-color: #3b5998;
+                  width: fit-content;
+                  padding: 6px 12px;
+                "
+              >
+                SUMMER SALES
+              </p>
+              <v-card-title class="text-heading02 text-gray00"
+                >37% DISCOUNT</v-card-title
+              >
+              <p class="body-large400 text-gray00">
+                only for
+                <span class="text-warning500 body-large600">SmartPhone</span>
+                product.
+              </p>
+              <v-card-action>
+                <CustomeButton
+                  title="SHOP NOW"
+                  append-icon="mdi-arrow-right"
+                  bg="secondary500"
+                />
+              </v-card-action> </v-card
+          ></v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </section>
 </template>
 <script lang="ts" setup>
@@ -136,6 +125,9 @@ import Image7 from "@/assets/ComputerAccessories/7.png";
 import Image8 from "@/assets/ComputerAccessories/8.png";
 import CustomeButton from "../shared/CustomeButton.vue";
 import CustomeCard from "../shared/CustomeCard.vue";
+import { useDisplay } from "vuetify";
+
+const { mdAndUp } = useDisplay();
 import { ref } from "vue";
 const listOfNavItems = [
   { id: 0, title: "All Products" },
@@ -269,5 +261,38 @@ const computerAccessoryItems = [
 .active-item::after {
   width: 100%;
   left: 0;
+}
+
+.first-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 22px;
+  line-height: 40px;
+  font-weight: 600;
+}
+.second-card {
+  background-color: #124261;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+@media (min-width: 600px) {
+  .first-card {
+    padding: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .first-card {
+    flex-direction: column;
+  }
 }
 </style>

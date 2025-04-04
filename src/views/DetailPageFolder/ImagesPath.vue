@@ -3,13 +3,6 @@
   <section
     style="position: relative; width: 100%; display: flex; align-items: center"
   >
-    <IconButton
-      icon="mdi mdi-chevron-left"
-      style="position: absolute; left: 0"
-      rounded
-      bg="primary500"
-      is-white-color
-    />
     <v-slide-group
       class="ma-0 pa-0"
       selected-class="custom-selected"
@@ -28,27 +21,19 @@
             'rounded-sm',
             activeShowImageIndex === index ? 'custom-selected' : '',
           ]"
-          height="96"
-          width="96"
+          height="60"
+          width="60"
           @click="handleChangeSjowImageIndex(index)"
         >
           <v-img :src="item?.image" style="width: 100%; height: 100%"></v-img>
         </v-card>
       </v-slide-group-item>
     </v-slide-group>
-    <IconButton
-      icon="mdi mdi-chevron-right"
-      style="position: absolute; right: 0; z-index: -1"
-      rounded
-      bg="primary500"
-      is-white-color
-    />
   </section>
 </template>
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 
-import IconButton from "../../shared/IconButton.vue";
 import Image1 from "@/assets/detail-page-images/0.png";
 import Image2 from "@/assets/detail-page-images/2.png";
 import Image3 from "@/assets/detail-page-images/3.png";

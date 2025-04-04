@@ -1,51 +1,38 @@
 <template>
-  <section style="margin-top: 72px">
+  <section style="margin-top: 20px">
     <p
       class="text-center"
-      style="font-size: 32px; font-weight: 600; margin-bottom: 40px"
+      style="font-size: 32px; font-weight: 600; margin-bottom: 10px"
     >
       Shop with Categorys
     </p>
     <div class="d-flex align-center" style="position: relative">
-      <div style="position: absolute; left: 0">
-        <IconButton
-          icon="mdi mdi-chevron-left"
-          rounded
-          bg="primary500"
-          is-white-color
-        />
-      </div>
-
-      <v-slide-group ref="slideGroup">
-        <v-slide-group-item v-for="(item, i) in listOfCategory" :key="i">
+      <v-slide-group ref="slideGroup" mandatory>
+        <v-slide-group-item
+          v-for="(item, i) in listOfCategory"
+          :key="i"
+          v-slot="{ selectedClass }"
+        >
           <v-card
             elevation="0"
-            class="border-thin rounded-sm custome-card default-hover"
+            :class="[
+              'border-thin',
+              ' rounded-sm',
+              ' custome-card',
+              ' default-hover',
+              selectedClass,
+            ]"
             style="margin-right: 16px"
           >
-            <v-img :src="item.image" style="width: 100%; height: 148px"></v-img>
-            <v-card-title
-              style="font-size: 18px; text-align: center; user-select: none"
-            >
-              {{ item.title }}
-            </v-card-title>
+            <v-img :src="item.image" style="width: 100%; height: 100px"></v-img>
+            <p class="text-center">{{ item.title }}</p>
           </v-card>
         </v-slide-group-item>
       </v-slide-group>
-
-      <div style="position: absolute; right: 0px; z-index: -1">
-        <IconButton
-          icon="mdi mdi-chevron-right"
-          rounded
-          bg="primary500"
-          is-white-color
-        />
-      </div>
     </div>
   </section>
 </template>
 <script lang="ts" setup>
-import IconButton from "../shared/IconButton.vue";
 import Image1 from "@/assets/showCategory/1.png";
 import Image2 from "@/assets/showCategory/2.png";
 import Image3 from "@/assets/showCategory/3.png";
@@ -185,9 +172,17 @@ const listOfCategory = [
 }
 
 .custome-card {
-  width: 250px;
-  height: 250px;
+  width: 180px;
+  height: 150px;
   padding: 12px 24px;
   cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .custome-card {
+    width: 200px;
+  }
+}
+@media (min-width: 1024px) {
 }
 </style>

@@ -7,14 +7,13 @@
     <v-card
       :style="cardHeightComput"
       elevation="0"
-      class="border-thin rounded-0"
-      style="padding: 4px"
+      class="border-thin rounded-0 main"
     >
       <div class="top-path">
         <div v-if="isShowLabel && labelTileProps !== ''" class="label">
           <Label :title="labelTileProps" />
         </div>
-        <v-img :src="image" style="width: 216px; height: 188px"></v-img>
+        <v-img :src="image" class="image"></v-img>
       </div>
 
       <div style="padding: 5px 12px" v-if="isShowRateStar">
@@ -40,7 +39,7 @@
         ({{ ratingNumber }})
       </div>
 
-      <v-card-subtitle style="margin-top: 12px">
+      <v-card-subtitle class="subtitle-margin-top">
         <LineClamp :title="description" textColor="text-gray900" />
         <p style="margin-top: 10px">
           <span
@@ -87,13 +86,15 @@ import Label from "./Label.vue";
 import IconButton from "./IconButton.vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { nextTick } from "vue";
 
 const router = useRouter();
 
 const goToDetailPage = () => {
   router.push("/detail-page").then(() => {
-    // window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    window.scrollTo(0, 0);
+    nextTick(() => {
+      window.scrollTo({ top: 0, left: 0 });
+    });
   });
 };
 
@@ -190,5 +191,21 @@ const handleMouseLeave = () => {
 .show-hover-item {
   opacity: 1;
   transform: translateY(0);
+}
+
+.main {
+  padding: 10px 6px;
+}
+
+@media (min-width: 600px) {
+}
+@media (min-width: 1024px) {
+  .subtitle-margin-top {
+    margin-top: 12px;
+  }
+  .image {
+    width: 216px;
+    height: 188px;
+  }
 }
 </style>

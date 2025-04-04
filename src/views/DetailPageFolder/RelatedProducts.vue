@@ -1,8 +1,14 @@
 <template>
-  <section class="mt-4">
+  <section class="mt-4 custom-width">
     <p class="body-xl400">Recommend products</p>
-    <v-row class="mt-6">
-      <v-col v-for="item in recommendProductsList" :key="item?.id" cols="3">
+    <v-row class="mt-2">
+      <v-col
+        v-for="item in recommendProductsList"
+        :key="item?.id"
+        cols="6"
+        sm="4"
+        lg="3"
+      >
         <CustomeCard
           :image="item?.image"
           :description="item?.description"
@@ -10,13 +16,14 @@
           :dis-count="item?.discount.toString()"
           :label-title="item?.label"
           isShowLabel
+          :card-height="mdAndUp ? '' : ''"
         />
       </v-col>
     </v-row>
   </section>
 </template>
 <script lang="ts" setup>
-import Image0 from "@/assets/feature-products/0.jpg";
+import { useDisplay } from "vuetify";
 import Image1 from "@/assets/feature-products/1.png";
 import Image2 from "@/assets/feature-products/2.png";
 import Image3 from "@/assets/feature-products/3.png";
@@ -39,11 +46,12 @@ import Image19 from "@/assets/showCategory/5.png";
 import Image20 from "@/assets/showCategory/6.png";
 import CustomeCard from "../../shared/CustomeCard.vue";
 
+const { mdAndUp } = useDisplay();
 const recommendProductsList = [
   {
     id: 0,
     label: "12% OFF",
-    image: Image0,
+    image: Image4,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, expedita! Odit laborum itaque vitae quas, quaerat ad ut ullam ex labore repellat! Ut, rem ipsa?",
     price: 1200,

@@ -1,14 +1,14 @@
 <template>
-  <section class="bg-gray50" style="margin-top: 72px; padding-bottom: 72px">
+  <section class="bg-gray50" style="margin-top: 40px; padding-bottom: 72px">
     <p
       class="text-heading01 text-center"
       style="padding-top: 72px; padding-bottom: 40px"
     >
       Latest News
     </p>
-    <v-container fluid style="width: 80%; margin: 0 auto">
+    <v-container fluid class="main">
       <v-row no-gutters class="d-flex ga-4">
-        <v-col v-for="item in items" :key="item?.id" style="">
+        <v-col v-for="item in items" :key="item?.id">
           <v-card
             class="pa-8"
             style="display: flex; flex-direction: column; align-items: start"
@@ -104,4 +104,13 @@ const items = [
   },
 ];
 </script>
-<style scoped></style>
+<style scoped>
+@media (min-width: 600px) {
+}
+@media (min-width: 1024px) {
+  .main {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+</style>

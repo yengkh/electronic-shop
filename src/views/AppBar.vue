@@ -1,6 +1,6 @@
 <template>
   <nav style="width: 100%">
-    <transition name="slide-up-fade">
+    <transition name="slide-up-fade" class="d-none d-lg-block">
       <section class="top-promotion bg-gray900" v-if="isShowPromotionBanner">
         <div style="width: 80%; margin: 0 auto" class="top-promotion-content">
           <p>
@@ -22,7 +22,7 @@
             <span
               class="text-warning500"
               style="font-size: 40px; font-weight: 600"
-              >59%</span
+              >70%</span
             >
             <span style="font-weight: 600; font-size: 20px">OFF</span>
           </p>
@@ -46,13 +46,10 @@
     </transition>
     <!-- App Bar -->
     <section class="bg-secondary700">
-      <div style="width: 80%; margin: 0 auto">
-        <!-- First -->
+      <div class="custom-width">
         <section class="second-path">
-          <p>Wellcome to electronic shop</p>
-          <div
-            style="display: flex; align-items: center; justify-content: center"
-          >
+          <p class="pt-5 pb-4 body-large400">Wellcome to electronic shop</p>
+          <div class="d-none d-sm-flex align-center justify-center pt-5 pb-2">
             <p>Follow us:</p>
             <v-btn
               size="small"
@@ -121,8 +118,22 @@
               </v-card>
             </section>
           </div>
+          <div class="pt-5 pb-4 d-flex align-center d-sm-none">
+            <v-badge
+              :content="2"
+              color="gray00"
+              style="margin-right: 10px; cursor: pointer"
+            >
+              <v-icon icon="mdi mdi-cart-outline"></v-icon>
+            </v-badge>
+            <v-btn icon="mdi mdi-cards-heart-outline" variant="text"></v-btn>
+            <v-btn icon="mdi mdi-account-outline" variant="text"></v-btn>
+          </div>
         </section>
-        <v-divider style="margin-top: 10px"></v-divider>
+        <v-divider
+          style="margin-top: 10px"
+          class="d-none d-sm-block"
+        ></v-divider>
         <!-- Second -->
         <section
           style="
@@ -130,25 +141,32 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 5px;
           "
         >
-          <div><v-btn> Logo </v-btn></div>
-          <div>
-            <v-text-field
-              :loading="loading"
-              append-inner-icon="mdi-magnify"
-              label="Find for items..."
-              variant="solo"
-              hide-details
-              size="x-large"
-              single-line
-              @click:append-inner="onClick"
-              style="width: 600px"
-              class="rounded-sm"
-              elevation="0"
-            ></v-text-field>
-          </div>
-          <div class="d-flex align-center">
+          <div class="d-none d-sm-block"><v-btn> Logo </v-btn></div>
+          <v-btn
+            icon="mdi mdi-menu"
+            class="d-sm-none"
+            rounded
+            @click="emit('toggle-drawer')"
+          ></v-btn>
+          <v-row justify="center">
+            <v-col cols="12" sm="12" md="9" lg="6">
+              <v-text-field
+                :loading="loading"
+                append-inner-icon="mdi-magnify"
+                label="Find for items..."
+                variant="solo"
+                hide-details
+                single-line
+                @click:append-inner="onClick"
+                class="rounded-sm"
+                elevation="0"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <div class="align-center d-none d-sm-flex">
             <div style="position: relative; z-index: 101">
               <v-badge
                 :content="2"
@@ -479,22 +497,40 @@
         </section>
       </div>
     </section>
-
     <!-- Category -->
-    <section style="width: 80%; margin: 0 auto">
+    <section class="custom-width d-none d-sm-block">
       <Category />
       <v-divider style="margin: 10px 0 20px"></v-divider>
     </section>
+    <div class="my-4 d-sm-none"></div>
   </nav>
   <div
     class="drop-shadow"
     v-if="isShowCart || isShowFavorites"
     @click="dropSahdowFunction()"
   ></div>
-  <!-- Login -->
+
+  <div class="d-lg-none drop-shadow" v-if="showPromotionForSmallScreen"></div>
+  <div
+    v-show="showPromotionForSmallScreen"
+    class="text-gray00 d-lg-none promotion-dailog"
+  >
+    <div style="width: 90%; margin-top: -40px" class="d-flex flex-column ga-1">
+      <div style="display: flex; align-items: end; justify-content: end">
+        <IconButton
+          icon="mdi mdi-close"
+          bg=""
+          rounded
+          size="small"
+          @click="handleClosePromotionDialog()"
+        />
+      </div>
+      <v-img :src="BlackFriday"></v-img>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onBeforeUnmount, ref, watch } from "vue";
 import Category from "./Category.vue";
 import English from "@/assets/united-kingdom.png";
 import Khmer from "@/assets/cambodia.png";
@@ -507,12 +543,21 @@ import Google from "@/assets/google.png";
 import TikTok from "@/assets/tik-tok.png";
 import FirstCart from "@/assets/feature-products/5.png";
 import SecondCart from "@/assets/feature-products/7.png";
+import BlackFriday from "@/assets/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg";
+import IconButton from "../shared/IconButton.vue";
+import { defineEmits } from "vue";
+const emit = defineEmits(["toggle-drawer"]);
 
 const dropSahdowFunction = () => {
   isShowCart.value = false;
   isShowFavorites.value = false;
 };
 
+const showPromotionForSmallScreen = ref(false);
+
+const handleClosePromotionDialog = () => {
+  showPromotionForSmallScreen.value = false;
+};
 const isShowPromotionBanner = ref(true);
 const toggleShowPromotionBanner = () =>
   (isShowPromotionBanner.value = !isShowPromotionBanner.value);
@@ -592,7 +637,7 @@ const toggleShowCart = () => {
   isShowFavorites.value = false;
 };
 
-const isShowFavorites = ref(false);
+const isShowFavorites = ref<boolean>(false);
 const toggleShowFavorites = () => {
   isShowFavorites.value = !isShowFavorites.value;
   isShowCart.value = false;
@@ -621,6 +666,18 @@ const calculateCartPrice = () => {
   });
   return total;
 };
+
+watch(showPromotionForSmallScreen, (newVal) => {
+  if (newVal) {
+    document.body.classList.add("no-scroll");
+  } else {
+    document.body.classList.remove("no-scroll");
+  }
+});
+
+onBeforeUnmount(() => {
+  document.body.classList.remove("no-scroll");
+});
 </script>
 <style scoped>
 .top-promotion {
@@ -701,16 +758,19 @@ const calculateCartPrice = () => {
   padding: 15px 30px;
 }
 
-.drop-shadow {
+.no-scroll {
+  overflow: hidden;
+}
+
+.promotion-dailog {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 100;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 </style>

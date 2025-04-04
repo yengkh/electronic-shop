@@ -1,6 +1,6 @@
 <template>
   <div style="position: relative">
-    <div style="padding: 16px 0 0" class="main">
+    <div style="padding: 16px 0 0; overflow-x: auto" class="main">
       <section class="first-path">
         <div
           @mouseenter="
@@ -26,7 +26,7 @@
         </div>
       </section>
       <section>
-        <p>
+        <p style="white-space: nowrap">
           <v-icon>mdi mdi-phone-outgoing-outline</v-icon
           ><span style="margin-left: 5px">(+855) 012-345-67</span>
         </p>

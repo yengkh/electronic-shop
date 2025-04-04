@@ -34,20 +34,31 @@ const shadowBackgroundColor = computed(() => props.shadowColor ?? "bg-gray00");
 </script>
 <style scoped>
 .first-div {
-  width: 98px;
-  height: 98px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   position: absolute;
   z-index: 9;
 }
 .second-div {
-  width: 88px;
-  height: 88px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 99;
   position: absolute;
+}
+
+@media (min-width: 1024px) {
+  .first-div {
+    width: 98px;
+    height: 98px;
+  }
+  .second-div {
+    width: 88px;
+    height: 88px;
+  }
 }
 </style>

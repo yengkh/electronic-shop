@@ -1,6 +1,6 @@
 <template>
   <v-row class="mt-4">
-    <v-col>
+    <v-col cols="12" md="6">
       <p class="body-xl400">Product Detail</p>
       <p class="text-gray700 mt-1">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi repellat
@@ -32,7 +32,7 @@
         quam est!
       </p>
     </v-col>
-    <v-col>
+    <v-col cols="12" md="6">
       <div class="d-flex justify-space-between align-center w-100 mb-2">
         <p class="body-xl400">Product Reviews (12)</p>
         <v-btn variant="text" append-icon="mdi-arrow-right" color="secondary500"
@@ -40,7 +40,13 @@
         >
       </div>
       <v-row>
-        <v-col cols="6" class="pa-2" v-for="(item, i) in reviewItems" :key="i">
+        <v-col
+          cols="12"
+          sm="6"
+          class="pa-2"
+          v-for="(item, i) in reviewItems"
+          :key="i"
+        >
           <v-card
             class="bg-gray50 rounded-lg pa-4 d-flex align-start default-hover"
             elevation="0"

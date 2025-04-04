@@ -1,5 +1,5 @@
 <template>
-  <v-main style="width: 80%; margin: 0 auto">
+  <v-main class="custom-width">
     <Hero />
     <BestDeals />
     <ShopWithCategory />

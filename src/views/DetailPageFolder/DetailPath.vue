@@ -1,6 +1,11 @@
 <template>
   <div class="d-flex align-center">
-    <StarReview :star-average="starAverage" />
+    <div class="d-none d-sm-block">
+      <StarReview :star-average="starAverage" />
+    </div>
+    <div class="d-sm-none">
+      <v-icon color="primary500">mdi mdi-star</v-icon>
+    </div>
     <p class="ml-2">4.7</p>
     <p class="ml-2">Star Rating</p>
     <p class="text-gray600 ml-2">(21,671 User feedback)</p>
@@ -43,59 +48,60 @@
     <Label title="21% OFF" />
   </div>
   <v-divider></v-divider>
-  <v-row class="my-2 mx-0 d-flex justify-space-between">
-    <v-col cols="5" class="ma-0 py-1 px-0">
-      <p>Color</p>
-      <section class="d-flex align-center ga-2 my-2">
+  <v-row class="my-2" no-gutters>
+    <v-col cols="12" sm="6" class="ma-0 px-1">
+      <p class="ma-0">Color</p>
+      <section class="d-flex align-center ga-2 mt-2">
         <div
           v-for="(_, index) in 2"
           class="bg-gray300 select-color"
-          :class="{
-            active: currentSelectColor === index,
-          }"
+          :class="{ active: currentSelectColor === index }"
           @click="handleChangeSelectColor(index)"
         ></div>
       </section>
     </v-col>
-    <v-col cols="5" class="ma-0 py-1 px-0">
-      <p>Size</p>
+    <v-col cols="6" class="ma-0 px-1">
+      <p class="ma-0">Size</p>
       <v-select
-        density="comfortable"
+        density="compact"
         :items="size"
         item-value="id"
-        class="w-full my-2 rounded-sm"
+        class="w-full rounded-sm"
         variant="outlined"
         elevation="0"
-        active
-      ></v-select>
+        style="margin: 0"
+      />
     </v-col>
-    <v-col cols="5" class="ma-0 py-1 px-0">
-      <p>Memory</p>
+
+    <v-col cols="6" class="ma-0 px-1">
+      <p class="ma-0">Memory</p>
       <v-select
-        density="comfortable"
+        density="compact"
         :items="size"
         item-value="id"
-        class="w-full my-2 rounded-sm"
+        class="w-full rounded-sm"
         variant="outlined"
         elevation="0"
-        active
-      ></v-select>
+        style="margin: 0"
+      />
     </v-col>
-    <v-col cols="5" class="ma-0 py-1 px-0">
-      <p>Storage</p>
+
+    <v-col cols="6" class="ma-0 px-1">
+      <p class="ma-0">Storage</p>
       <v-select
-        density="comfortable"
+        density="compact"
         :items="size"
         item-value="id"
-        class="w-full my-2 rounded-sm"
+        class="w-full rounded-sm"
         variant="outlined"
         elevation="0"
-        active
-      ></v-select>
+        style="margin: 0"
+      />
     </v-col>
   </v-row>
+
   <v-row>
-    <v-col cols="3">
+    <v-col cols="6" sm="3">
       <section
         class="border-thin rounded-sm d-flex justify-space-between align-center"
       >
@@ -104,16 +110,16 @@
         <IconButton icon="mdi mdi-plus" @click="increaseQuantity()" bg="" />
       </section>
     </v-col>
-    <v-col cols="5">
+    <v-col cols="6" sm="5">
       <CustomeButton
         title="ADD TO CART"
         append-icon="mdi mdi-cart-outline"
         style="width: 100%; height: 100%"
       />
     </v-col>
-    <v-col cols="4">
+    <v-col cols="12" sm="4">
       <v-btn
-        style="width: 100%; height: 100%"
+        style="width: 100%; height: 50px"
         variant="outlined"
         color="primary500"
       >
@@ -121,22 +127,28 @@
       </v-btn>
     </v-col>
   </v-row>
-  <section class="d-flex justify-space-between align-center my-4">
-    <div>
-      <CustomeButton
-        title="Add to Wishlist"
-        bg=""
-        prepend-icon="mdi mdi-heart-outline"
-        text-color="gray700"
-      />
-      <CustomeButton
-        title="Add to compass"
-        prepend-icon="mdi mdi-cached"
-        bg=""
-        text-color="gray700"
-      />
-    </div>
-    <div class="d-flex align-center">
+  <v-row class="d-flex justify-space-between align-center my-4 pa-0">
+    <v-col cols="12" sm="8">
+      <v-row>
+        <v-col cols="6">
+          <CustomeButton
+            title="Add to Wishlist"
+            bg=""
+            prepend-icon="mdi mdi-heart-outline"
+            text-color="gray700"
+          />
+        </v-col>
+        <v-col cols="6">
+          <CustomeButton
+            title="Add to compass"
+            prepend-icon="mdi mdi-cached"
+            bg=""
+            text-color="gray700"
+          />
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-col class="d-flex align-center" cols="12" sm="4">
       <p class="mr-2">Share product:</p>
       <IconButton
         icon="mdi mdi-content-copy"
@@ -147,8 +159,8 @@
       />
       <IconButton icon="mdi mdi-facebook" rounded bg="" is-show-padding />
       <IconButton icon="mdi mdi-instagram" rounded bg="" is-show-padding />
-    </div>
-  </section>
+    </v-col>
+  </v-row>
   <div class="border-thin pa-4 rounded-sm">
     <p class="text-gray900 body-medium400 mb-2">100% Guarantee Safe Checkout</p>
     <v-img :src="Image7" height="18" width="312" />
@@ -187,15 +199,15 @@ const decreaseQuantity = () => {
 </script>
 <style scoped>
 .select-color {
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .select-color.active {
-  width: 35px;
-  height: 35px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   outline: 2px solid #fa8232;
   padding: 8px;

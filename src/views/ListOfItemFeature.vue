@@ -1,7 +1,13 @@
 <template>
   <section style="margin-top: 72px">
     <v-row>
-      <v-col v-for="item in listOfTitle" :key="item?.id" cols="3">
+      <v-col
+        v-for="item in listOfTitle"
+        :key="item?.id"
+        cols="12"
+        sm="6"
+        lg="3"
+      >
         <p class="body-medium600">{{ item?.title }}</p>
         <v-card
           v-for="smallItem in item?.item"
