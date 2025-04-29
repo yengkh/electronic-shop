@@ -545,7 +545,6 @@ import FirstCart from "@/assets/feature-products/5.png";
 import SecondCart from "@/assets/feature-products/7.png";
 import BlackFriday from "@/assets/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg";
 import IconButton from "../shared/IconButton.vue";
-import { defineEmits } from "vue";
 const emit = defineEmits(["toggle-drawer"]);
 
 const dropSahdowFunction = () => {
